@@ -1,0 +1,94 @@
+a {
+  text-decoration: none;
+}
+
+.header-side {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  z-index: 10;
+}
+.navbar-side {
+  background-color: rgb(255, 197, 72);
+  height: 100vh;
+  padding: 20px;
+  position: fixed;
+  top: 50px;
+  left: 0;
+  z-index: 20;
+}
+
+.navbar-side h1 {
+  text-align: center;
+  margin: 10px auto 50px auto;
+}
+
+.navbar-side a {
+  text-align: center;
+  margin: 0 auto 20px auto;
+}
+.menu-item {
+  width: 320px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.food-manager {
+  margin-top: 20px;
+}
+
+.food-manager h1 {
+  text-align: center;
+  margin: 30px auto;
+}
+
+.food-manager img {
+  height: 100px;
+  width: 200px;
+}
+
+.item-food-img {
+  width: 30%;
+}
+
+.item-food-button {
+  width: 15%;
+}
+
+.login-form {
+  width: 500px;
+  margin: 150px auto;
+}
+
+.login-card {
+  padding: 30px 20px 50px 20px;
+}
+
+.user-info-container {
+  margin: 50px auto 50px auto;
+  padding: 0 10px;
+}
+.user-info-container h1 {
+  text-transform: uppercase;
+  text-align: center;
+  color: coral;
+  margin-bottom: 50px;
+}
+.user-info-container .user-item-info {
+  width: 500px;
+  margin: 20px auto;
+}
+
+.user-info-container button {
+  padding: 10px 20px;
+  width: 200px;
+  margin: 20px 50%;
+}
+
+.margin-side {
+  margin-left: 25%;
+  width: 75%;
+  margin-top: 50px;
+}
