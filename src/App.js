@@ -6,6 +6,7 @@ import {
   AccountManager,
   OrderManager,
   BillManager,
+  RevenueManager,
   Header,
   Login,
   Info,
@@ -40,6 +41,7 @@ class App extends Component {
           <Route exact path="/qr" component={QRManager} />
           <Route exact path="/order" component={OrderManager} />
           <Route exact path="/bill" component={BillManager} />
+          <Route exact path="/revenue" component={RevenueManager} />
           <Route
             exact
             path="/login"

@@ -32,7 +32,7 @@ class NavbarSide extends Component {
               Quản lý hóa đơn
             </ListGroup.Item>
           </Link>
-          <Link to="/">
+          <Link to="/revenue">
             <ListGroup.Item className="menu-item">
               Quản lý doanh thu
             </ListGroup.Item>
