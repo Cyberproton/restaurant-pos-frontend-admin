@@ -30,9 +30,10 @@ a {
   margin: 0 auto 20px auto;
 }
 .menu-item {
-  width: 320px;
+  width: 90%;
   text-transform: uppercase;
   font-weight: 600;
+  margin: 25px auto;
 }
 
 .food-manager {
@@ -41,7 +42,7 @@ a {
 
 .food-manager h1 {
   text-align: center;
-  margin: 30px auto;
+  margin: 80px auto 30px auto;
 }
 
 .food-manager img {
@@ -55,6 +56,9 @@ a {
 
 .item-food-button {
   width: 15%;
+}
+.item-food-button button {
+  padding: 7px 20px;
 }
 
 .login-form {
@@ -91,4 +95,44 @@ a {
   margin-left: 25%;
   width: 75%;
   margin-top: 50px;
+}
+
+.opa-food {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.568);
+  z-index: 2;
+  height: 100vmax;
+  width: 100%;
+}
+
+.add-food {
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  z-index: 3;
+  width: 500px;
+  height: auto;
+  border: solid 1px;
+  background-color: white;
+  padding: 50px;
+}
+
+.add-food input {
+  margin-bottom: 10px;
+}
+
+.add-food button {
+  margin: 20px 50px;
+  padding: 10px 30px;
+}
+
+.qr-manager {
+  margin-top: 100px;
+}
+
+.qr-manager h4 {
+  text-align: center;
+  font-size: 25pt;
 }

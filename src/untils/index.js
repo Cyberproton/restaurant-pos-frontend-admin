@@ -1,8 +1,7 @@
-import Home from "../components/Home";
-import FoodManager from "../components/FoodManager";
+import FoodManager from "../components/FoodManager/FoodManager";
 import QRManager from "../components/QRManager";
-import AccountManager from "../components/AccountManager";
-import BillManager from "../components/BillManager";
+import AccountManager from "../components/AccountManager/AccountManager";
+import BillManager from "../components/BillManager/BillManager";
 import OrderManager from "../components/OrderManager";
 import Header from "../components/Header";
 import Login from "../components/Login";
@@ -10,7 +9,6 @@ import Info from "../components/Info";
 import NavbarSide from "../components/NavbarSide";
 
 export {
-  Home,
   FoodManager,
   QRManager,
   AccountManager,

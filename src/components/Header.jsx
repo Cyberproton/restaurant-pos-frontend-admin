@@ -14,7 +14,7 @@ class Header extends React.Component {
     if (this.props.isLogin === false) return <Redirect to="/login" />;
     return (
       <div>
-        <NavbarSide />
+        <NavbarSide role={this.props.role} />
         <Navbar
           collapseOnSelect
           expand="lg"

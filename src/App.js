@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import {
-  Home,
   FoodManager,
   QRManager,
   AccountManager,
@@ -13,10 +12,12 @@ import {
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./css/App.css";
+import axios from "./axios";
 
 class App extends Component {
   state = {
     isLogin: false,
+    role: "",
   };
 
   UNSAFE_componentWillMount() {
@@ -24,17 +25,21 @@ class App extends Component {
   }
 
   checkLogin = async () => {
-    if (localStorage.getItem("token") !== null)
-      this.setState({ isLogin: true });
-    else this.setState({ isLogin: false });
+    if (localStorage.getItem("token") !== null) {
+      const token = localStorage.getItem("token");
+      const res = await axios.get(`/api/admin/role`, {
+        headers: { token: token },
+      });
+      this.setState({ isLogin: true, role: res.data });
+    } else this.setState({ isLogin: false, role: "" });
   };
 
   render() {
     return (
       <Router>
-        <Header isLogin={this.state.isLogin} />
+        <Header isLogin={this.state.isLogin} role={this.state.role} />
         <Switch>
-          <Route exact path="/" component={Home} />
+          <Route exact path="/" component={FoodManager} />
           <Route exact path="/food" component={FoodManager} />
           <Route exact path="/account" component={AccountManager} />
           <Route exact path="/qr" component={QRManager} />
