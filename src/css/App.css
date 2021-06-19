@@ -22,7 +22,7 @@ a {
 
 .navbar-side h1 {
   text-align: center;
-  margin: 10px auto 50px auto;
+  margin: 10px auto 20px auto;
 }
 
 .navbar-side a {
@@ -55,7 +55,7 @@ a {
 }
 
 .item-food-button {
-  width: 15%;
+  width: 250px;
 }
 .item-food-button button {
   padding: 7px 20px;
@@ -70,25 +70,23 @@ a {
   padding: 30px 20px 50px 20px;
 }
 
-.user-info-container {
-  margin: 50px auto 50px auto;
-  padding: 0 10px;
-}
 .user-info-container h1 {
   text-transform: uppercase;
   text-align: center;
   color: coral;
-  margin-bottom: 50px;
+  margin: 100px auto 50px auto;
 }
+
 .user-info-container .user-item-info {
-  width: 500px;
+  width: 550px;
   margin: 20px auto;
+  font-size: 15pt;
 }
 
 .user-info-container button {
   padding: 10px 20px;
   width: 200px;
-  margin: 20px 50%;
+  margin: 20px 45%;
 }
 
 .margin-side {

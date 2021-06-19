@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Table, Container, Button } from "react-bootstrap";
+import { Table, Container, Button, ListGroup } from "react-bootstrap";
 import axios from "../../axios";
 import AccountItem from "./AccountItem";
 import ModifyAccount from "./ModifyAccount";
@@ -7,9 +7,9 @@ import ModifyAccount from "./ModifyAccount";
 class AccountManager extends Component {
   state = {
     accounts: [],
-    isAddAccount: false,
-    isModifyAccount: false,
-    accountInfo: {},
+    isAdd: false,
+    isModify: false,
+    currentItem: {},
   };
 
   UNSAFE_componentWillMount() {
@@ -29,14 +29,16 @@ class AccountManager extends Component {
   };
 
   clickAddAccount = () => {
-    this.setState({ isAddAccount: !this.state.isAddAccount });
+    this.setState({ isAdd: !this.state.isAdd });
+    this.getData();
   };
 
   clickModifyAccount = (account) => {
-    if (this.state.isModifyAccount === false) {
-      this.setState({ accountInfo: account });
+    if (this.state.isModify === false) {
+      this.setState({ currentItem: account });
     }
-    this.setState({ isModifyAccount: !this.state.isModifyAccount });
+    this.setState({ isModify: !this.state.isModify });
+    this.getData();
   };
 
   handleDelete = async (_id) => {
@@ -57,19 +59,22 @@ class AccountManager extends Component {
 
     return (
       <Container className="food-manager margin-side">
-        {this.state.isAddAccount && (
-          <ModifyAccount onCance={this.clickAddAccount} />
-        )}
-        {this.state.isModifyAccount && (
+        {this.state.isAdd && <ModifyAccount onCance={this.clickAddAccount} />}
+        {this.state.isModify && (
           <ModifyAccount
-            account={this.state.accountInfo}
+            account={this.state.currentItem}
             onCance={this.clickModifyAccount}
           />
         )}
         <h1>Danh sách nhân viên cửa hàng</h1>
+        <ListGroup.Item action>
+          {listAccount.length === 0
+            ? "Cửa hàng chưa có nhân viên nào!"
+            : "Tổng số nhân viên: " + listAccount.length}
+        </ListGroup.Item>
         <Button
           variant="primary"
-          className="mb-3"
+          className="mb-3 mt-3"
           onClick={this.clickAddAccount}
         >
           Thêm nhân viên mới

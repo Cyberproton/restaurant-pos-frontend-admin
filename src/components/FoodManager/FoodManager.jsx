@@ -1,15 +1,15 @@
 import React, { Component } from "react";
-import { Table, Container, Button } from "react-bootstrap";
+import { Table, Container, Button, ListGroup } from "react-bootstrap";
 import axios from "../../axios";
 import ModifyFood from "./ModifyFood";
 import FoodItem from "./FoodItem";
 
 class FoodManager extends Component {
   state = {
-    foods: [],
-    isAddFood: false,
-    isModifyFood: false,
-    foodInfo: {},
+    items: [],
+    isAdd: false,
+    isModify: false,
+    itemCurrent: {},
   };
 
   UNSAFE_componentWillMount() {
@@ -19,19 +19,28 @@ class FoodManager extends Component {
   getData = async () => {
     const { data } = await axios.get(`/api/food`);
     this.setState({
-      foods: data.foods,
+      items: data.foods,
     });
   };
 
-  clickAddFood = () => {
-    this.setState({ isAddFood: !this.state.isAddFood });
+  handleAdd = () => {
+    this.setState({ isAdd: !this.state.isAdd });
+    this.getData();
   };
 
-  clickModifyFood = (food) => {
-    if (this.state.isModifyFood === false) {
-      this.setState({ foodInfo: food });
+  handleLock = async (item) => {
+    if (item.lock === false)
+      await axios.post(`/api/food/lock`, { _id: item._id });
+    else await axios.post(`/api/food/unlock`, { _id: item._id });
+    this.getData();
+  };
+
+  handleModify = (item) => {
+    if (this.state.isModify === false) {
+      this.setState({ itemCurrent: item });
     }
-    this.setState({ isModifyFood: !this.state.isModifyFood });
+    this.setState({ isModify: !this.state.isModify });
+    this.getData();
   };
 
   handleDelete = async (_id) => {
@@ -40,26 +49,41 @@ class FoodManager extends Component {
   };
 
   render() {
-    const foods = this.state.foods;
-    const listFood = foods.map((food, index) => (
+    const items = this.state.items;
+    const list = items.map((item, index) => (
       <FoodItem
-        food={food}
+        item={item}
         index={index}
-        clickModifyFood={this.clickModifyFood}
-        handleDelete={this.handleDelete}
+        onLock={this.handleLock}
+        onModify={this.handleModify}
+        onDelete={this.handleDelete}
       />
     ));
     return (
       <Container className="food-manager margin-side">
-        {this.state.isAddFood && <ModifyFood onCance={this.clickAddFood} />}
-        {this.state.isModifyFood && (
+        {this.state.isAdd && <ModifyFood onCance={this.handleAdd} />}
+        {this.state.isModify && (
           <ModifyFood
-            food={this.state.foodInfo}
-            onCance={this.clickModifyFood}
+            food={this.state.itemCurrent}
+            onCance={this.handleModify}
           />
         )}
-        <h1>Danh sách món ăn</h1>
-        <Button variant="primary" className="mb-3" onClick={this.clickAddFood}>
+        <h1>QUẢN LÝ MÓN ĂN</h1>
+        <ListGroup>
+          <ListGroup.Item action>
+            {list.length === 0
+              ? "Cửa hàng chưa có món nào để bán!"
+              : "Tổng số món: " + list.length}
+          </ListGroup.Item>
+          <ListGroup.Item action>Món bán nhiều nhất:</ListGroup.Item>
+          <ListGroup.Item action>Món bán ít nhất: </ListGroup.Item>
+        </ListGroup>
+
+        <Button
+          variant="primary"
+          className="mb-3 mt-3"
+          onClick={this.handleAdd}
+        >
           Thêm món mới
         </Button>
         <Table striped bordered hover>
@@ -72,7 +96,7 @@ class FoodManager extends Component {
               <th></th>
             </tr>
           </thead>
-          <tbody>{listFood}</tbody>
+          <tbody>{list}</tbody>
         </Table>
       </Container>
     );

@@ -27,20 +27,20 @@ class NavbarSide extends Component {
           </Link>
           <Link to="/account">
             <ListGroup.Item className="menu-item">
-              Quản lý tài khoản nhân viên
+              Quản lý nhân viên
             </ListGroup.Item>
           </Link>
           <Link to="/qr">
             <ListGroup.Item className="menu-item">Quản lý mã QR</ListGroup.Item>
           </Link>
-          <Link to="/">
+          <Link to="/revenue">
             <ListGroup.Item className="menu-item">
               Quản lý doanh thu
             </ListGroup.Item>
           </Link>
         </div>
       );
-    else if (role === "checf")
+    else if (role === "chef")
       show = (
         <div>
           <Link to="/order">
@@ -74,7 +74,7 @@ class NavbarSide extends Component {
 
     return (
       <Col className="navbar-side" xs={3}>
-        <h1 className="w3-bar-item">Manager</h1>
+        <h1 className="w3-bar-item">MANAGER</h1>
         <ListGroup>{show}</ListGroup>
       </Col>
     );

@@ -10,6 +10,7 @@ class ModifyFood extends Component {
     price: "",
     type: "",
     regions: "",
+    lock: false,
   };
 
   UNSAFE_componentWillMount() {
@@ -22,6 +23,7 @@ class ModifyFood extends Component {
         price: food.price,
         type: food.type,
         regions: food.regions,
+        lock: food.lock,
       });
     }
   }
@@ -34,10 +36,11 @@ class ModifyFood extends Component {
     });
   };
 
-  handleSubmit = () => {
+  handleSubmit = async (e) => {
+    e.preventDefault();
     const food = this.props.food;
     if (food) {
-      axios.post(`/api/food/update`, {
+      await axios.post(`/api/food/update`, {
         _id: food._id,
         name: this.state.name,
         imageUrl: this.state.imageUrl,
@@ -45,17 +48,20 @@ class ModifyFood extends Component {
         price: this.state.price,
         type: this.state.type,
         regions: this.state.regions,
+        lock: this.state.lock,
       });
     } else {
-      axios.post(`/api/food/add`, {
+      await axios.post(`/api/food/add`, {
         name: this.state.name,
         imageUrl: this.state.imageUrl,
         description: this.state.description,
         price: this.state.price,
         type: this.state.type,
         regions: this.state.regions,
+        lock: this.state.lock,
       });
     }
+    this.props.onCance();
   };
 
   render() {
@@ -122,7 +128,7 @@ class ModifyFood extends Component {
               onChange={this.handleInputChange}
             />
           </Form.Group>
-          <Button variant="danger" type="submit" onClick={this.props.onCance}>
+          <Button variant="danger" onClick={this.props.onCance}>
             Hủy
           </Button>
           <Button type="submit">Lưu</Button>

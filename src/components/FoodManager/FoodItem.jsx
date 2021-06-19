@@ -2,32 +2,40 @@ import React, { Component } from "react";
 import { Button } from "react-bootstrap";
 
 class FoodItem extends Component {
-  state = {};
-
-  handleModify = () => {
-    this.props.clickModifyFood(this.props.food);
+  onLock = () => {
+    this.props.onLock(this.props.item);
   };
 
-  ondelete = () => {
-    this.props.handleDelete(this.props.food._id);
+  onModify = () => {
+    this.props.onModify(this.props.item);
+  };
+
+  onDelete = () => {
+    this.props.onDelete(this.props.item._id);
   };
 
   render() {
-    const food = this.props.food;
+    const item = this.props.item;
     const index = this.props.index;
     return (
       <tr key={index}>
         <td>{index + 1}</td>
         <td className="item-food-img">
-          <img src={food.imageUrl} alt="" />
+          <img src={item.imageUrl} alt="" />
         </td>
-        <td>{food.name}</td>
-        <td>{food.price}</td>
-        <td className="item-food-button ">
-          <Button variant="warning" onClick={this.handleModify}>
+        <td>{item.name}</td>
+        <td>{item.price}</td>
+        <td className="item-food-button">
+          <Button
+            variant={item.lock === false ? "success" : "secondary"}
+            onClick={this.onLock}
+          >
+            {item.lock === false ? "Khóa" : "Mở"}
+          </Button>{" "}
+          <Button variant="warning" onClick={this.onModify}>
             Sửa
           </Button>{" "}
-          <Button variant="danger" onClick={this.ondelete}>
+          <Button variant="danger" onclick={this.onDelete}>
             Xóa
           </Button>
         </td>

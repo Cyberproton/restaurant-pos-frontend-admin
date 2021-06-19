@@ -38,10 +38,11 @@ class ModifyAccount extends Component {
     });
   };
 
-  handleSubmit = () => {
+  handleSubmit = async (e) => {
+    e.preventDefault();
     const account = this.props.account;
     if (account) {
-      axios.post(`/api/admin/update`, {
+      await axios.post(`/api/admin/update`, {
         _id: account._id,
         username: this.state.username,
         password: this.state.password,
@@ -53,7 +54,7 @@ class ModifyAccount extends Component {
         salary: this.state.salary,
       });
     } else {
-      axios.post(`/api/admin/add`, {
+      await axios.post(`/api/admin/add`, {
         username: this.state.username,
         fullname: this.state.fullname,
         password: this.state.password,
@@ -64,6 +65,7 @@ class ModifyAccount extends Component {
         salary: this.state.salary,
       });
     }
+    this.props.onCance();
   };
 
   render() {
@@ -150,7 +152,7 @@ class ModifyAccount extends Component {
               onChange={this.handleInputChange}
             />
           </Form.Group>
-          <Button variant="danger" type="submit" onClick={this.props.onCance}>
+          <Button variant="danger" onClick={this.props.onCance}>
             Hủy
           </Button>
           <Button type="submit">Lưu</Button>

@@ -7,6 +7,7 @@ import Header from "../components/Header";
 import Login from "../components/Login";
 import Info from "../components/Info";
 import NavbarSide from "../components/NavbarSide";
+import RevenueManager from "../components/RevenueManager";
 
 export {
   FoodManager,
@@ -18,4 +19,5 @@ export {
   Login,
   Info,
   NavbarSide,
+  RevenueManager,
 };
