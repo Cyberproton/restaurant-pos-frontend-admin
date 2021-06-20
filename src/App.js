@@ -3,12 +3,14 @@ import {
   FoodManager,
   QRManager,
   AccountManager,
-  OrderManager,
-  BillManager,
+  NewOrder,
   Header,
   Login,
   Info,
   RevenueManager,
+  DeliverOrder,
+  ProcessingOrder,
+  FinishedOrder,
 } from "./untils";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -19,6 +21,7 @@ class App extends Component {
   state = {
     isLogin: false,
     role: "",
+    orderState: "new",
   };
 
   UNSAFE_componentWillMount() {
@@ -38,14 +41,24 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <Header isLogin={this.state.isLogin} role={this.state.role} />
+        <Header
+          isLogin={this.state.isLogin}
+          role={this.state.role}
+          changeStateOrder={this.changeStateOrder}
+        />
         <Switch>
-          <Route exact path="/" component={FoodManager} />
+          <Route exact path="/" component={Info} />
           <Route exact path="/food" component={FoodManager} />
           <Route exact path="/account" component={AccountManager} />
           <Route exact path="/qr" component={QRManager} />
-          <Route exact path="/order" component={OrderManager} />
-          <Route exact path="/bill" component={BillManager} />
+          <Route exact path="/ordertest/new" component={NewOrder} />
+          <Route exact path="/ordertest/deliver" component={DeliverOrder} />
+          <Route
+            exact
+            path="/ordertest/processing"
+            component={ProcessingOrder}
+          />
+          <Route exact path="/ordertest/finished" component={FinishedOrder} />
           <Route exact path="/revenue" component={RevenueManager} />
           <Route
             exact

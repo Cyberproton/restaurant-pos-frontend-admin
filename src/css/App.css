@@ -17,18 +17,18 @@ a {
   position: fixed;
   top: 50px;
   left: 0;
-  z-index: 20;
+  z-index: 10;
 }
 
 .navbar-side h1 {
   text-align: center;
-  margin: 10px auto 20px auto;
+  margin: 5px auto;
 }
 
 .navbar-side a {
   text-align: center;
-  margin: 0 auto 20px auto;
 }
+
 .menu-item {
   width: 90%;
   text-transform: uppercase;
@@ -133,4 +133,12 @@ a {
 .qr-manager h4 {
   text-align: center;
   font-size: 25pt;
+}
+
+.cancel-button-order {
+  margin-top: 10px;
+}
+
+.cancel-button-order button {
+  margin: 10px 20px;
 }
