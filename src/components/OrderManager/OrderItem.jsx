@@ -63,7 +63,8 @@ class OrderItem extends Component {
       return (
         <tr>
           <td>{food.name}</td>
-          <td>{food.count}</td>
+          <td>{food.price}</td>
+          <td>{food.amount}</td>
         </tr>
       );
     });
@@ -128,6 +129,7 @@ class OrderItem extends Component {
             <thead>
               <tr>
                 <th>Tên món</th>
+                <th>Giá</th>
                 <th>Số lượng</th>
               </tr>
             </thead>
