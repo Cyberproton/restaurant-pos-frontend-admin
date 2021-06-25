@@ -39,9 +39,9 @@ class OrderItem extends Component {
   };
 
   handleDeliver = async () => {
-    await axios.post(`/api/ordertest/update-state`, {
+    await axios.post(`/api/ordertest/payment`, {
       _id: this.props.item._id,
-      state: "finished",
+      paymentMethod: "cast",
     });
     this.props.getData();
   };
