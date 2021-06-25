@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Table, Container } from "react-bootstrap";
+import { Redirect } from "react-router-dom";
 import axios from "../../axios";
+import { checkLogin } from "../../untils/functions";
 import OrderItem from "./OrderItem";
 
 class FinishedOrder extends Component {
@@ -13,13 +15,16 @@ class FinishedOrder extends Component {
   }
 
   getData = async () => {
-    const { data } = await axios.get(`/api/ordertest/finished`);
+    const { data } = await axios.get(`/api/order/finished`);
     this.setState({
       items: data.orders,
     });
   };
 
   render() {
+    if (!checkLogin()) {
+      return <Redirect to="/login"/>
+    }
     const items = this.state.items;
     const list = items.map((item, index) => (
       <OrderItem item={item} index={index} getData={this.getData} />

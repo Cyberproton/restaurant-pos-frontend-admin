@@ -3,6 +3,8 @@ import { Table, Container, Button, ListGroup } from "react-bootstrap";
 import axios from "../../axios";
 import AccountItem from "./AccountItem";
 import ModifyAccount from "./ModifyAccount";
+import { Redirect } from "react-router-dom";
+import { checkLogin } from "../../untils/functions";
 
 class AccountManager extends Component {
   state = {
@@ -47,6 +49,9 @@ class AccountManager extends Component {
   };
 
   render() {
+    if (!checkLogin()) {
+      return <Redirect to="/login"/>
+    }
     const accounts = this.state.accounts;
     const listAccount = accounts.map((account, index) => (
       <AccountItem

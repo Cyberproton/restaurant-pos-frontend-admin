@@ -12,6 +12,8 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { Bar } from "react-chartjs-2";
 import axios from "../axios";
+import { Redirect } from "react-router-dom";
+import { checkLogin } from "../untils/functions";
 
 export default class RevenueManager extends Component {
   constructor(props) {
@@ -31,10 +33,10 @@ export default class RevenueManager extends Component {
 
   componentDidMount() {
     axios
-      .get("/api/bill")
+      .get("/api/bill/")
       .then((res) => {
         const bills = res.data.bills;
-
+        console.log(bills);
         if (!bills) {
           return;
         }
@@ -68,6 +70,9 @@ export default class RevenueManager extends Component {
   }
 
   render() {
+    if (!checkLogin()) {
+      return <Redirect to="/login"/>
+    }
     const chartFormat = this.state.chartFormat;
     const dateFrom = this.state.dateFrom;
     const dateTo = this.state.dateTo;

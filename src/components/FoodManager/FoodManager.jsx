@@ -3,6 +3,8 @@ import { Table, Container, Button, ListGroup } from "react-bootstrap";
 import axios from "../../axios";
 import ModifyFood from "./ModifyFood";
 import FoodItem from "./FoodItem";
+import { Redirect } from "react-router-dom";
+import { checkLogin } from "../../untils/functions";
 
 class FoodManager extends Component {
   state = {
@@ -49,6 +51,9 @@ class FoodManager extends Component {
   };
 
   render() {
+    if (!checkLogin()) {
+      return <Redirect to="/login"/>
+    }
     const items = this.state.items;
     const list = items.map((item, index) => (
       <FoodItem

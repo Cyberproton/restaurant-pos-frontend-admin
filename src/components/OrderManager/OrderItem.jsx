@@ -15,7 +15,7 @@ class OrderItem extends Component {
 
   handleCancel = async (e) => {
     e.preventDefault();
-    await axios.post(`/api/ordertest/update-state`, {
+    await axios.post(`/api/order/update-state`, {
       _id: this.props.item._id,
       state: "cancel",
     });
@@ -23,7 +23,7 @@ class OrderItem extends Component {
   };
 
   handleConfirm = async () => {
-    await axios.post(`/api/ordertest/update-state`, {
+    await axios.post(`/api/order/update-state`, {
       _id: this.props.item._id,
       state: "confirmed",
     });
@@ -31,7 +31,7 @@ class OrderItem extends Component {
   };
 
   handleFinish = async () => {
-    await axios.post(`/api/ordertest/update-state`, {
+    await axios.post(`/api/order/update-state`, {
       _id: this.props.item._id,
       state: "deliver",
     });
@@ -39,7 +39,7 @@ class OrderItem extends Component {
   };
 
   handleDeliver = async () => {
-    await axios.post(`/api/ordertest/payment`, {
+    await axios.post(`/api/order/payment`, {
       _id: this.props.item._id,
       paymentMethod: "cast",
     });
@@ -47,7 +47,7 @@ class OrderItem extends Component {
   };
 
   handleDelete = async () => {
-    await axios.post(`/api/ordertest/delete`, {
+    await axios.post(`/api/order/delete`, {
       _id: this.props.item._id,
     });
     this.props.getData();

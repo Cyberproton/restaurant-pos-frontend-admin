@@ -14,22 +14,22 @@ class NavbarSide extends Component {
               Quản lý món ăn
             </ListGroup.Item>
           </Link>
-          <Link to="/ordertest/new">
+          <Link to="/order/new">
             <ListGroup.Item className="menu-item">
               Đơn hàng chờ xác nhận
             </ListGroup.Item>
           </Link>
-          <Link to="/ordertest/processing">
+          <Link to="/order/processing">
             <ListGroup.Item className="menu-item">
               Đơn hàng đang thực hiện
             </ListGroup.Item>
           </Link>
-          <Link to="/ordertest/deliver">
+          <Link to="/order/deliver">
             <ListGroup.Item className="menu-item">
               Đơn hàng chờ giao
             </ListGroup.Item>
           </Link>
-          <Link to="/ordertest/finished">
+          <Link to="/order/finished">
             <ListGroup.Item className="menu-item">
               Quản lý hóa đơn
             </ListGroup.Item>
@@ -57,12 +57,12 @@ class NavbarSide extends Component {
               Quản lý món ăn
             </ListGroup.Item>
           </Link>
-          <Link to="/ordertest/new">
+          <Link to="/order/new">
             <ListGroup.Item className="menu-item">
               Đơn hàng chờ xác nhận
             </ListGroup.Item>
           </Link>
-          <Link to="/ordertest/processing">
+          <Link to="/order/processing">
             <ListGroup.Item className="menu-item">
               Đơn hàng đang thực hiện
             </ListGroup.Item>
@@ -72,12 +72,12 @@ class NavbarSide extends Component {
     else {
       show = (
         <div>
-          <Link to="/ordertest/deliver">
+          <Link to="/order/deliver">
             <ListGroup.Item className="menu-item">
               Đơn hàng chờ giao
             </ListGroup.Item>
           </Link>
-          <Link to="/ordertest/finished">
+          <Link to="/order/finished">
             <ListGroup.Item className="menu-item">
               Quản lý hóa đơn
             </ListGroup.Item>

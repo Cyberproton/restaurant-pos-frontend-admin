@@ -61,7 +61,7 @@ class UserInfo extends Component {
     }
     return (
       <Container className="user-info-container margin-side">
-        <h1>Tran Long An</h1>
+        <h1>{this.state.user.fullname ? this.state.user.fullname : this.state.user.username}</h1>
         <Row className="user-item-info">
           <Col>Tên đăng nhập :</Col>
           <Col>

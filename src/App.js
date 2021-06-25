@@ -51,14 +51,14 @@ class App extends Component {
           <Route exact path="/food" component={FoodManager} />
           <Route exact path="/account" component={AccountManager} />
           <Route exact path="/qr" component={QRManager} />
-          <Route exact path="/ordertest/new" component={NewOrder} />
-          <Route exact path="/ordertest/deliver" component={DeliverOrder} />
+          <Route exact path="/order/new" component={NewOrder} />
+          <Route exact path="/order/deliver" component={DeliverOrder} />
           <Route
             exact
-            path="/ordertest/processing"
+            path="/order/processing"
             component={ProcessingOrder}
           />
-          <Route exact path="/ordertest/finished" component={FinishedOrder} />
+          <Route exact path="/order/finished" component={FinishedOrder} />
           <Route exact path="/revenue" component={RevenueManager} />
           <Route
             exact

@@ -11,7 +11,8 @@ import {
 } from "react-bootstrap";
 import { FaHammer, FaPlus } from "react-icons/fa";
 import QRCode from "qrcode.react";
-
+import { Redirect } from "react-router-dom";
+import { checkLogin } from "../untils/functions";
 import axios from "../axios";
 
 export default class QRManager extends Component {
@@ -52,6 +53,9 @@ export default class QRManager extends Component {
   }
 
   render() {
+    if (!checkLogin()) {
+      return <Redirect to="/login"/>
+    }
     const qrcode = this.state.selectedQrCode;
     const view = qrcode ? <QrCodeView qrcode={qrcode} /> : null;
     const addForm = this.state.isShowingAddQrCodeForm ? (
